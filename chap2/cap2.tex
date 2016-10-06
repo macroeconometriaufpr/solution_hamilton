@@ -1,0 +1,72 @@
+\chapter{Previsão}
+
+\begin{enumerate}
+	\item[\fbox{4.1}]
+	
+	Fórmula 4.3.6: 
+	
+	\begin{align*}
+		\boldsymbol{\alpha}^{(m)}{'}&\equiv
+		\begin{bmatrix}
+\alpha_0^{m}&\alpha_1^m&\alpha_2^m&\cdots&\alpha_m^m
+		\end{bmatrix}\\
+		&=\begin{bmatrix}
+		\mu&\gamma_1+\mu^2&\gamma_2+\mu^2&\cdots&\gamma^m+\mu^2
+		\end{bmatrix}\\
+		&\times\begin{bmatrix}
+		1&\mu&\mu&\cdots&\mu\\[0.3cm]
+		\mu&\gamma_0+\mu^2&\gamma_1+\mu^2&\cdots&\gamma_{m-1}+\mu^2\\[0.3cm]
+		\mu&\gamma_1+\mu^2&\gamma_0+\mu^2&\cdots&\gamma_{m-2}+\mu^2\\[0.3cm]
+		\vdots&\vdots&\vdots&\ddots&\vdots\\[0.3cm]
+		\mu&\gamma{m-1}+\mu^2&\gamma_{m-2}+\mu^2&\cdots&\gamma_0+\mu^2
+		\end{bmatrix}^{-1}\\
+		\\
+		&\equiv  {E}\big[Y_{t+1}X_t'\big] {E}\big[X_tX_t'\big]^{-1}\\
+		\text{Para }X_t=\begin{bmatrix}
+		1&Y_t
+		\end{bmatrix}'\\
+		&=\begin{bmatrix}
+		 {E}[Y_{t+1}]&
+		 {E}[Y_{t+1}Y_t]
+		\end{bmatrix}
+		\times
+		\begin{bmatrix}
+		1&E[Y_{t}]\\[0.3cm]
+		E[Y_{t}]&E[Y_{t}^2]
+		\end{bmatrix}^{-1}\\
+		&=\begin{bmatrix}
+		\mu&
+		\gamma_1+\mu^2
+		\end{bmatrix}
+		\times
+		\frac{1}{\gamma_0}
+		\begin{bmatrix}
+		\gamma_0+\mu^2&-\mu\\
+		-\mu&1
+		\end{bmatrix}\\
+		\boldsymbol{\alpha}'&=
+		\frac{1}{\gamma_0}
+		\begin{bmatrix}
+		\mu\gamma_0+\mu^3-\mu\gamma_1-\mu^3&-\mu^2+\gamma_1+\mu^2
+		\end{bmatrix}\\
+		&=\frac{1}{\gamma_0}
+		\begin{bmatrix}
+		\mu\gamma_0-\mu\gamma_1&\gamma_1
+		\end{bmatrix}\\
+		&=\begin{bmatrix}
+		(1-\rho_1)\mu&\rho_1
+		\end{bmatrix}
+	\end{align*}
+	\begin{align*}
+	\hat{E}[Y_{t+1}|Y_t]&=\boldsymbol{\alpha}'X_t\\
+&=\begin{bmatrix}
+(1-\rho_1)\mu&\rho_1
+\end{bmatrix}
+	\begin{bmatrix}
+	1\\
+	Y_t
+	\end{bmatrix}\\
+	\hat {E}\big[Y_{t+1}|Y_t\big]&=(1-\rho_1)\mu+\rho_1Y_t
+	\end{align*}
+	Portanto a previsão para o período $t+1$ com base em informações somente do período $t$ é uma média ponderada entre o valor esperado de $Y_t$, $\mu$ e $Y_t$, em que o fator de ponderação é o coeficiente de autocorrelação de primeira defasagem, $\rho_1$.
+\end{enumerate}
