@@ -8,24 +8,24 @@
 	\begin{align*}
 		\boldsymbol{\alpha}^{(m)}{'}&\equiv
 		\begin{bmatrix}
-\alpha_0^{m}&\alpha_1^m&\alpha_2^m&\cdots&\alpha_m^m
+\alpha_0^{(m)}&\alpha_1^{(m)}&\alpha_2^{(m)}&\cdots&\alpha_m^{(m)}
 		\end{bmatrix}\\
 		&=\begin{bmatrix}
-		\mu&\gamma_1+\mu^2&\gamma_2+\mu^2&\cdots&\gamma^m+\mu^2
+		\mu&\gamma_1+\mu^2&\gamma_2+\mu^2&\cdots&\gamma_m+\mu^2
 		\end{bmatrix}\\
 		&\times\begin{bmatrix}
 		1&\mu&\mu&\cdots&\mu\\[0.3cm]
 		\mu&\gamma_0+\mu^2&\gamma_1+\mu^2&\cdots&\gamma_{m-1}+\mu^2\\[0.3cm]
 		\mu&\gamma_1+\mu^2&\gamma_0+\mu^2&\cdots&\gamma_{m-2}+\mu^2\\[0.3cm]
 		\vdots&\vdots&\vdots&\ddots&\vdots\\[0.3cm]
-		\mu&\gamma{m-1}+\mu^2&\gamma_{m-2}+\mu^2&\cdots&\gamma_0+\mu^2
+		\mu&\gamma_{m-1}+\mu^2&\gamma_{m-2}+\mu^2&\cdots&\gamma_0+\mu^2
 		\end{bmatrix}^{-1}\\
 		\\
-		&\equiv  {E}\big[Y_{t+1}X_t'\big] {E}\big[X_tX_t'\big]^{-1}\\
-		\text{Para }X_t=\begin{bmatrix}
+		&\equiv  {E}\big[Y_{t+1}\mathbf{X}_t'\big] {E}\big[\mathbf{X}_t\mathbf{X}_t'\big]^{-1}\\
+		\text{Para }\mathbf{X}_t=\begin{bmatrix}
 		1&Y_t
 		\end{bmatrix}'\\
-		&=\begin{bmatrix}
+		\boldsymbol{\alpha}^{(1)}{'}&=\begin{bmatrix}
 		 {E}[Y_{t+1}]&
 		 {E}[Y_{t+1}Y_t]
 		\end{bmatrix}
@@ -44,7 +44,7 @@
 		\gamma_0+\mu^2&-\mu\\
 		-\mu&1
 		\end{bmatrix}\\
-		\boldsymbol{\alpha}'&=
+		&=
 		\frac{1}{\gamma_0}
 		\begin{bmatrix}
 		\mu\gamma_0+\mu^3-\mu\gamma_1-\mu^3&-\mu^2+\gamma_1+\mu^2
@@ -58,7 +58,7 @@
 		\end{bmatrix}
 	\end{align*}
 	\begin{align*}
-	\hat{E}[Y_{t+1}|Y_t]&=\boldsymbol{\alpha}'X_t\\
+	\hat{E}[Y_{t+1}|Y_t]&=\boldsymbol{\alpha}'\mathbf{X}_t\\
 &=\begin{bmatrix}
 (1-\rho_1)\mu&\rho_1
 \end{bmatrix}
@@ -68,5 +68,250 @@
 	\end{bmatrix}\\
 	\hat {E}\big[Y_{t+1}|Y_t\big]&=(1-\rho_1)\mu+\rho_1Y_t
 	\end{align*}
-	Portanto a previsão para o período $t+1$ com base em informações somente do período $t$ é uma média ponderada entre o valor esperado de $Y_t$, $\mu$ e $Y_t$, em que o fator de ponderação é o coeficiente de autocorrelação de primeira defasagem, $\rho_1$.
+	Portanto a previsão de $Y_{t+1}$ com base em informações somente do período $t$ é uma média ponderada entre o valor esperado de $Y_t$ ($\mu$) e $Y_t$, em que o fator de ponderação é o coeficiente de autocorrelação de primeira defasagem, $\rho_1$.
+	
+	\begin{enumerate}
+		\item %a 
+		Processo $AR(1)$: $$Y_t=c+\phi Y_{t-1}+\varepsilon_t$$
+		
+		Equação 4.2.9:
+		$$\hat{E}[Y_{t+s}|\varepsilon_t, \varepsilon_{t-1},\cdots
+		]=\mu+\frac{\psi(L)}{L^s}\varepsilon_t$$
+		
+		Se o processo $AR(1)$ for invertível ele pode ser escrito da forma 
+		\begin{align*}
+		Y_t&=\frac{c}{1-\phi L}+\frac{\varepsilon_t}{1-\phi L}\\
+		&=\mu+\psi(L)\varepsilon_t, \;\;\;\; \psi(L)=1+\phi L+\phi^2L^2+\cdots
+		\end{align*}
+	
+	Para $Y_{t+1}$ o processo se torna: $$Y_{t+1}=\mu+\varepsilon_{t+1}+\phi\varepsilon_{t}+\phi^2\varepsilon_{t-1}+\cdots$$
+	O preditor linear ótimo tem a forma:
+	$$\hat{E}[Y_{t+1}|\varepsilon_t, \varepsilon_{t-1},\cdots]=\mu+\phi\varepsilon_t+\phi^2\varepsilon_{t-1}+\cdots$$
+	Dividindo  $\psi(L)$ por $L^s$ com $s=1$
+	$$\frac{\psi(L)}{L}=L^{-1}+\phi+\phi^2L+\cdots$$
+	 e tratando os $L$ com expoente negativo como zero para derivar o operador de aniquilação, o preditor ótimo para um período à frente pode ser escrito em notação de operador de defasagem:
+	$$\hat{E}[Y_{t+1}|\varepsilon_t, \varepsilon_{t-1},\cdots]=\mu+\Bigg[\frac{\psi(L)}{L}\Bigg]_+\varepsilon_t$$
+	Que é idêntico à equação 4.2.9 com $s=1$.
+	
+	
+	\item %b
+	Processo $MA(1)$:
+	$$Y_n=\mu+\varepsilon_n+\theta\varepsilon_{n-1}$$
+	
+	Equação 4.5.20:
+	$$\hat{E}(Y_n|Y_{n-1},Y_{n-2},\cdots,Y_1)=\mu+\frac{\theta[1+\theta^2+\theta^4+\cdots+\theta^{2(n-2)}]}{[1+\theta^2+\theta^4+\cdots+\theta^{2(n-1)}]}\bigg[Y_{n-1}-\hat{E}(Y_{n-1}|Y_{n-2},Y_{n-3},\cdots,Y_1)\bigg]$$
+	
+	O processo $MA(1)$ pode ser escrito como:
+	
+	
+	
+		$$Y_n-\mu=\varepsilon_n+\theta\varepsilon_{n-1}$$
+	
+	As autocovariâncias são:
+	
+	\begin{align*}
+		\gamma_0&=E[(Y_n-\mu)^2]=E(\varepsilon_n+\theta\varepsilon_{n-1})(\varepsilon_n+\theta\varepsilon_{n-1})=E(\varepsilon_n^2+2\theta\varepsilon_n\varepsilon_{n-1}+\theta^2\varepsilon_{n-1}^2)=\sigma^2[{1+\theta^2}]\\
+		\gamma_1&=E[(Y_n-\mu)(Y_{n-1}\-\mu)]=E[(\varepsilon_n+\theta\varepsilon_{n-1})(\varepsilon_{n-1}+\theta\varepsilon_{n-2})]\\
+		&=E(\varepsilon_n \varepsilon_{n-1}+\theta\varepsilon_n\varepsilon_{n-2}+\theta\varepsilon_{n-1}^2+\theta^2\varepsilon_{n-1}\varepsilon_{n-2})=\sigma^2\theta\\
+		\gamma_j&=0 \;\;\; j= 2,3,\cdots.
+	\end{align*}
+	
+	Temos que para $n=2$
+	\begin{align*}
+	\hat{E}(Y_2|Y_1)&=\mu+\text{Cov}(Y_2,Y_1)\text{Var}(Y_2^2)^{-1}(Y_1-\hat{E}(Y_1))\\
+	&=\mu+\frac{\theta}{1+\theta^2}(Y_1-\hat{E}(Y_1))
+	\end{align*}
+	Que é idêntico à equação 4.5.20 com $n=2$.
+
+	\item %c
+	 Dado que $$\hat {E}\big[Y_{t+1}|Y_t\big]=(1-\rho_1)\mu+\rho_1Y_t$$
+	 Podemos rearranjar a expressão e obter 
+	 $$\hat {E}\big[Y_{t+1}|Y_t\big]=\mu+\rho_1(Y_t-\mu)$$
+	 Como o coeficiente de correlação de primeira defasagem de um processo $AR(2)$ é
+	 
+	 $$\rho_1=\frac{\phi_1}{1-\phi_2}$$
+	 
+	 O preditor se torna
+	 $$\hat {E}\big[Y_{t+1}|Y_t\big]=\mu+\frac{\phi_1}{1-\phi_2}(Y_t-\mu)$$
+	 
+	 O resíduo desta predição é 
+	 
+	 \begin{align*}
+	 \bar{Y}_{t+1|t}&=Y_{t+1}-\Bigg[\mu+\frac{\phi_1}{1-\phi_2}(Y_t-\mu)\Bigg]\\
+	 &=\mu+\phi_1Y_t+\phi_2Y_{t-1}+\varepsilon_{t+1}-\mu-\frac{\phi_1}{1-\phi_2}(Y_t-\mu)\\
+	 &=\frac{\phi_1}{1-\phi_2}\mu-\Bigg(\frac{\phi_1\phi_2}{1-\phi_2}\Bigg)Y_t+\phi_2Y_{t-1}+\varepsilon_{t+1}
+	 \end{align*}
+	
+	Verificando correlação entre resíduo e valores defasados: \begin{align*}
+			E(\bar{Y}_{t+1|t}Y_t)&=E\Bigg\{\Bigg[\frac{\phi_1}{1-\phi_2}\mu-\Bigg(\frac{\phi_1\phi_2}{1-\phi_2}\Bigg)Y_t+\phi_2Y_{t-1}+\varepsilon_{t+1}\Bigg]\Bigg[\mu+\phi_1Y_{t-1}+\phi_2Y_{t-2}+\varepsilon_t\Bigg]\Bigg\}\\
+			&\neq0
+			\end{align*}
+	Então, $\hat{Y}_{t+1|t}$ e $Y_t$ são correlacionados.
+	
+	\begin{align*}
+		E(\bar{Y}_{t+1|t}Y_{-1})&=E\Bigg\{\Bigg[\frac{\phi_1}{1-\phi_2}\mu-\Bigg(\frac{\phi_1\phi_2}{1-\phi_2}\Bigg)Y_t+\phi_2Y_{t-1}+\varepsilon_{t+1}\Bigg]\Bigg[\mu+\phi_1Y_{t-2}+\phi_2Y_{t-3}+\varepsilon_{t-1}\Bigg]\Bigg\}\\
+		&\neq0
+	\end{align*}
+	Então, $\hat{Y}_{t+1|t}$ e $Y_{t-1}$ também são correlacionados.
+	
+	\end{enumerate}
+	
+	 
+	
+	\item[\fbox{4.2}]
+		
+		Como $s=q=1$, temos um processo $MA(1)$:
+		
+		$$Y_t=\mu+\varepsilon_t+\theta\varepsilon_{t-1}$$
+		
+		E a predição a ser realizada para um período à frente:
+		
+		$$E[Y_{t+1}|Y_t].$$
+		
+		Dado que o processo $MA(1)$ possa ser escrito na forma 
+		$$Y_t-\mu=(1+\theta L)\varepsilon_t.$$
+		
+		Sendo a fórmula de predição de \emph{Wiener-Kolmogorov} para $s=1$:
+		$$\hat{Y}_{t+1|t}=\mu+\Bigg[\frac{\psi(L)}{L}\Bigg]_+\varepsilon_t$$
+		Substituindo o processo $$MA(1)$$ na fórmula temos:
+		
+		$$\hat{Y}_{t+1|t}=\mu+\Bigg[\frac{1+\theta L}{L}\Bigg]_+\frac{(Y_t-\mu)}{1+\theta L}$$
+		
+		Para o processo $MA(1)$:
+		
+		$$\Big[\frac{1+\theta L}{L}\Big]_+=\theta$$
+
+		Então podemos escrever a fórmula de \emph{Wiener-Kolmogorov} como
+		
+		$$\hat{Y}_{t+1|t}=\mu+\theta\frac{(Y_t-\mu)}{1+\theta L}$$
+		
+		Expandindo a soma infinita representada:
+		
+		$$\hat{Y}_{t+1|t}=\mu+\theta(Y_t-\mu)-\theta^2(Y_{t-1}-\mu)+\theta^3(Y_{t-2}-\mu)-\cdots+(-1)^{m-1}\theta^{m}(Y_{t-m+1}-\mu)$$
+		
+		Equivalente à equação 4.3.3.
+		
+	 
+	
+	\item[\fbox{4.3}]
+	
+\begin{align*}
+	\boldsymbol{\Omega}&=\begin{bmatrix*}[r]
+		1&-2&3\\
+		-2&6&-4\\
+		3&-4&12
+	\end{bmatrix*}\\
+	\mathbf{E_1}&=\begin{bmatrix*}[r]
+	1&0&0\\
+	2&1&0\\
+	-3&0&1
+	\end{bmatrix*}\\
+	\mathbf{E}_1\boldsymbol{\Omega}\mathbf{E}_1{'}=\mathbf{H}&=\begin{bmatrix*}[r]
+	1&0&0\\
+	2&1&0\\
+	-3&0&1
+	\end{bmatrix*}\begin{bmatrix*}[r]
+	1&-2&3\\
+	-2&6&-4\\
+	3&-4&12
+	\end{bmatrix*}\begin{bmatrix*}[r]
+	1&2&-3\\
+	0&1&0\\
+	0&0&1
+	\end{bmatrix*}\\
+	&=\begin{bmatrix*}[r]
+	1&-2&3\\
+	0&2&2\\
+	0&2&3
+	\end{bmatrix*}
+	\begin{bmatrix*}[r]
+	1&2&-3\\
+	0&1&0\\
+	0&0&1
+	\end{bmatrix*}\\
+	&=\begin{bmatrix}
+		1&0&0\\
+		0&2&2\\
+		0&2&3
+	\end{bmatrix}
+\end{align*}	
+
+\begin{align*}
+	\mathbf{E}_2&=\begin{bmatrix*}[r]
+	1&0&0\\
+	0&1&0\\
+	0&-1&1
+	\end{bmatrix*}\\
+	\mathbf{E}_2\mathbf{H}\mathbf{E}_2{'}&=\begin{bmatrix*}[r]
+	1&0&0\\
+	0&1&0\\
+	0&-1&1
+	\end{bmatrix*}
+	\begin{bmatrix}
+	1&0&0\\
+	0&2&2\\
+	0&2&3
+	\end{bmatrix}
+	\begin{bmatrix*}[r]
+	1&0&0\\
+	0&1&-1\\
+	0&0&1
+	\end{bmatrix*}\\
+	&=\begin{bmatrix}
+	1&0&0\\
+	0&2&2\\
+	0&0&1
+	\end{bmatrix}
+		\begin{bmatrix*}[r]
+	1&0&0\\
+	0&1&-1\\
+	0&0&1
+	\end{bmatrix*}\\
+	&=\begin{bmatrix}
+	1&0&0\\
+	0&2&0\\
+	0&0&1
+	\end{bmatrix}
+\end{align*}
+\begin{align*}
+\mathbf{E}_2\mathbf{E}_1\boldsymbol{\Omega}\mathbf{E}_1{'}\mathbf{E}_2{'}=\mathbf{E}_2\mathbf{E}_1\boldsymbol{\Omega}(\mathbf{E}_2\mathbf{E}_1)'&=\mathbf{A}\boldsymbol{\Omega}\mathbf{A}'\\
+\mathbf{A}=\mathbf{E}_2\mathbf{E}_1&=
+\begin{bmatrix}
+1&0&0\\
+0&1&0\\
+0&-1&1
+\end{bmatrix}
+\begin{bmatrix*}[r]
+1&0&0\\
+2&1&0\\
+-3&0&1
+\end{bmatrix*}\\
+&=\begin{bmatrix*}[r]
+1&0&0\\
+2&1&0\\
+-5&-1&1
+\end{bmatrix*}\\
+\end{align*}
+$$\mathbf{A}\boldsymbol{\Omega}\mathbf{A}'=\begin{bmatrix*}[r]
+1&0&0\\
+2&1&0\\
+-5&-1&1
+\end{bmatrix*}\\
+\begin{bmatrix*}[r]
+1&0&0\\
+0&2&0\\
+0&0&1
+\end{bmatrix*}
+\begin{bmatrix*}[r]
+1&2&-5\\
+0&1&-1\\
+0&0&1
+\end{bmatrix*}$$
+
+
+	 
+
+	
+	\item[\fbox{4.4}]
+	
 \end{enumerate}
