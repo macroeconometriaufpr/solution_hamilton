@@ -274,28 +274,34 @@
 	\end{bmatrix}
 \end{align*}
 \begin{align*}
-\mathbf{E}_2\mathbf{E}_1\boldsymbol{\Omega}\mathbf{E}_1{'}\mathbf{E}_2{'}=\mathbf{E}_2\mathbf{E}_1\boldsymbol{\Omega}(\mathbf{E}_2\mathbf{E}_1)'&=\mathbf{A}\boldsymbol{\Omega}\mathbf{A}'\\
-\mathbf{A}=\mathbf{E}_2\mathbf{E}_1&=
-\begin{bmatrix}
+\mathbf{E}_2\mathbf{E}_1\boldsymbol{\Omega}\mathbf{E}_1{'}\mathbf{E}_2{'}=\mathbf{E}_2\mathbf{E}_1\boldsymbol{\Omega}(\mathbf{E}_2\mathbf{E}_1)'&=\mathbf{A}^{-1}\boldsymbol{\Omega}\mathbf{A}{'}^{-1}=\mathbf{D}\\
+\boldsymbol{\Omega}&=\mathbf{A}\mathbf{D}\mathbf{A}'\\
+\mathbf{A}=(\mathbf{E}_2\mathbf{E}_1)^{-1}&=
+\begin{bmatrix}\begin{bmatrix}
 1&0&0\\
 0&1&0\\
 0&-1&1
-\end{bmatrix}
+\end{bmatrix}&
 \begin{bmatrix*}[r]
 1&0&0\\
 2&1&0\\
 -3&0&1
-\end{bmatrix*}\\
+\end{bmatrix*}\end{bmatrix}^{-1}\\
 &=\begin{bmatrix*}[r]
 1&0&0\\
 2&1&0\\
 -5&-1&1
-\end{bmatrix*}\\
+\end{bmatrix*}^{-1}\\
+&=\begin{bmatrix*}[r]
+	1&0&0\\
+	-2&1&0\\
+	3&1&1
+\end{bmatrix*}
 \end{align*}
 $$\mathbf{A}\boldsymbol{\Omega}\mathbf{A}'=\begin{bmatrix*}[r]
 1&0&0\\
-2&1&0\\
--5&-1&1
+-2&1&0\\
+3&1&1
 \end{bmatrix*}\\
 \begin{bmatrix*}[r]
 1&0&0\\
@@ -303,8 +309,8 @@ $$\mathbf{A}\boldsymbol{\Omega}\mathbf{A}'=\begin{bmatrix*}[r]
 0&0&1
 \end{bmatrix*}
 \begin{bmatrix*}[r]
-1&2&-5\\
-0&1&-1\\
+1&-2&3\\
+0&1&1\\
 0&0&1
 \end{bmatrix*}$$
 
@@ -314,4 +320,33 @@ $$\mathbf{A}\boldsymbol{\Omega}\mathbf{A}'=\begin{bmatrix*}[r]
 	
 	\item[\fbox{4.4}]
 	
+	Não pois o coeficiente de $Y_2$ da projeção linear de $Y_4$ contra $Y_3$, $Y_2$ e $Y_1$ é:
+	
+	Dado que
+	
+	$$Y_4=\bar{Y}_4+k_{43}k_{33}^{-1}\bar{Y}_3+h_{41}h_{22}^{-1}\bar{Y}_2+\Omega_{41}\Omega_{11}^{-1}\bar{Y}_1,$$
+	
+	temos ainda que:
+	  $$\bar{Y}_1=Y,$$
+	 $$\bar{Y}_2=Y_2-\Omega_{21}\Omega_{11}^{-1}\bar{Y}_1$$
+	 $$\bar{Y}_3=Y_3-\Omega_{31}\Omega_{11}^{-1}Y_1-h_{32}h_{22}^{-1}(Y_2-\Omega_{21}\Omega_{11}^{-1}\bar{Y}_1)$$
+	 
+	 Substituindo em $Y_4$ nos dá:
+	 	\begin{align*}
+	 	Y_4&=\bar{Y}_4+k_{43}k_{33}^{-1}(Y_3-\Omega_{31}\Omega_{11}^{-1}Y_1-h_{32}h_{22}^{-1}(Y_2-\Omega_{21}\Omega_{11}^{-1}{Y}_1))\\
+	 	&+h_{41}h_{22}^{-1}(Y_2-\Omega_{21}\Omega_{11}^{-1}){Y}_1+\Omega_{41}\Omega_{11}^{-1}{Y}_1
+	 	\end{align*}
+	 Podemos observar que o coeficiente de $Y_2$ é 
+	 $$h_{41}h_{22}^{-1}-k_{43}k_{33}^{-1}h_{32}h_{22}^{-1}$$
+	 
+	 Já o elemento $(4,2)$ de $\mathbf{A}$ é 
+	 
+	 $$h_{41}h_{22}^{-1}$$
+	 
+	 Portanto a resposta é não.
+	 
+	 \item[\fbox{4.5}]
+	 
+	 
+	 
 \end{enumerate}
