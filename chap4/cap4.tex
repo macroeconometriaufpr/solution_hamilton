@@ -343,10 +343,56 @@ $$\mathbf{A}\boldsymbol{\Omega}\mathbf{A}'=\begin{bmatrix*}[r]
 	 
 	 $$h_{41}h_{22}^{-1}$$
 	 
-	 Portanto a resposta é não.
+	 Dado que $k_{43}k_{33}^{-1}h_{32}h_{22}^{-1}\neq 0$, os termos são diferentes e a resposta é não.
 	 
 	 \item[\fbox{4.5}]
 	 
-	 
-	 
+	 Se $X_t$ segue um processo $AR(p)$ ele pode ser representado na forma 
+	
+	\begin{align*}
+		X_t&=\phi_1X_{t-1}+\phi_2X_{t-2}+\cdots+\phi_pX_{t-p}+\varepsilon_t.\\
+		X_t&=\frac{\varepsilon_t}{1-\phi_1L-\phi_2L^2-\cdots-\phi_pL^p}
+	\end{align*}
+	Com $\varepsilon_t$ sendo um \emph{ruído branco}. Então o processo $Y_t=X_t+\nu_t$ se torna 
+	$$Y_t=\frac{\varepsilon_t}{1-\phi_1L-\phi_2L^2-\cdots-\phi_pL^p}+\nu_t.$$ 
+	Que por sua vez pode ser escrito como
+	\begin{align*}
+		Y_t&=\frac{\varepsilon_t+(1-\phi_1L-\phi_2L^2-\cdots-\phi_pL^p)\nu_t}{(1-\phi_1L-\phi_2L^2-\cdots-\phi_pL^p)}\\
+		&=\frac{\varepsilon_t+\nu_t-\phi_1\nu_{t-1}-\phi_2\nu_{t-2}-\cdots-\phi_p\nu_{t-p}}{(1-\phi_1L-\phi_2L^2-\cdots-\phi_pL^p)}.
+	\end{align*}
+	Que é um processo $ARMA(p,p)$ com $\theta_i=-\phi_i$, $i=1,2,\cdots,p$.
+	
+	\item[\fbox{4.6}]
+		
+		Se $X_t$ segue um processo $AR(p)$ ele pode ser representado na forma 
+		
+		\begin{align*}
+			X_t&=\phi_1X_{t-1}+\phi_2X_{t-2}+\cdots+\phi_pX_{t-p}+\varepsilon_t.\\
+			X_t&=\frac{\varepsilon_t}{1-\phi_1L-\phi_2L^2-\cdots-\phi_pL^p}
+		\end{align*}
+		Com $\varepsilon_t$ sendo um \emph{ruído branco}. Se $Z_t$ segue um processo $MA(q)$, ele pode ser escrito como
+		
+		\begin{align*}
+			Z_t&=\epsilon_t+\theta_1\epsilon_{t-1}+\theta_2\epsilon_{t-1}+\cdots+\theta_q\epsilon_{t-1}\\
+			&=(1+\theta_1L+\theta_2L^2+\cdots+\theta_qL^q)\epsilon_t
+		\end{align*}
+		
+		Somando os dois processos temos:
+		
+		\begin{align*}
+			Y_t&=X_t+Z_t\\
+			&=\frac{\varepsilon_t}{1-\phi_1L-\phi_2L^2-\cdots-\phi_pL^p}+(1+\theta_1L+\theta_2L^2+\cdots+\theta_qL^q)\epsilon_t\\
+			&=\frac{\varepsilon_t+(1-\phi_1L-\phi_2L^2-\cdots-\phi_pL^p)(1+\theta_1L+\theta_2L^2+\cdots+\theta_qL^q)\epsilon_t}{1-\phi_1L-\phi_2L^2-\cdots-\phi_pL^p}
+		\end{align*}
+	
+		Expandindo o termo $(1-\phi_1L-\phi_2L^2-\cdots-\phi_pL^p)(1+\theta_1L+\theta_2L^2+\cdots+\theta_qL^q)$ temos:
+		
+		\begin{align*}
+			&1-\phi_1L-\phi_2L^2-\cdots-\phi_pL^p\\
+			&+\theta_1L-\theta_1\phi_1L^2-\theta_1\phi_2L^3-\cdots-\theta_1\phi_pL^{p+1}\\
+			&+\theta_2L^2-\theta_2\phi_1L^3-\theta_2\phi_2L^4-\cdots-\theta_2\phi_pL^{p+2}\\
+			&+\vdots\\
+			&+\theta_qL^q-\theta_q\phi_1L^{1+q}-\theta_q\phi_2L^{2+q}-\cdots-\theta_q\phi_pL^{p+q}
+		\end{align*}
+	Então a maior ordem de defasagem de $\epsilon_{t-j}$ é $p+q$,  $j=0,1,2,\cdots,p+q$. Com isso o processo $Y_t$ é um processo $ARMA(p,p+q)$.
 \end{enumerate}
