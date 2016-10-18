@@ -1,0 +1,54 @@
+\chapter{Estimação de Máxima Verossimilhança}
+
+
+\begin{enumerate}
+	\item[\fbox{5.1}]
+	
+	Equação 5.4.16: $$\mathscr{L}(\boldsymbol{\theta})=\log f_{\mathbf{Y}}(\mathbf{y};\boldsymbol{\theta})=-\frac{T}{2}\log (2\pi)-\frac{1}{2}\sum \limits_{t=1}^T\log (d_{tt})-\frac{1}{2}\sum \limits _{t=1}^T\frac{\bar{y}_t^2}{d_{tt}}.$$
+	
+	os termos que possuem $\theta$ e $\sigma^2$ são as equações 5.4.11
+	$$\bar{y}=y_t-\mu-\frac{\theta[1+\theta^2+\theta^4+\cdots+\theta^{2(t-2)}]}{[1+\theta^2+\theta^4+\cdots+\theta^{2(t-1)}]}\bar{y}_{t-1},$$
+	e 5.4.12
+	$$d_{tt}=E(\bar{Y}_t^2)=\sigma^2\frac{1+\theta^2+\theta^4+\cdots+\theta^{2t}}{1+\theta^2+\theta^4+\cdots+\theta^{2(t-1)}}.$$
+	
+	as duas equações são compostas por uma razão de somas finitas, com isso temos:
+	
+	\begin{align*}
+		\frac{\theta[1+\theta^2+\theta^4+\cdots+\theta^{2(t-2)}]}{[1+\theta^2+\theta^4+\cdots+\theta^{2(t-1)}]}&=\frac{\theta[\frac{1-\theta^{2(t-2)}}{1-\theta^2}]}{\frac{1-\theta^{2(t-1)}}{1-\theta^2}}\\
+		&=\theta\frac{[1-\theta^{2(t-2)}]}{1-\theta^{2(t-1)}}\\
+	\end{align*}
+	e
+	\begin{align*}
+		\frac{1+\theta^2+\theta^4+\cdots+\theta^{2t}}{1+\theta^2+\theta^4+\cdots+\theta^{2(t-1)}}&=\frac{\frac{1-\theta^{2t}}{1-\theta^2}}{\frac{1-\theta^{2(t-1)}}{1-\theta^2}}\\
+		&=\frac{1-\theta^{2t}}{1-\theta^{2(t-1)}}
+	\end{align*}
+	
+	Se $\sigma^2=\bar{\sigma}^2$ e $\theta=\bar{\theta}$, então:
+	
+	
+	\begin{align*}
+	\bar{y}&=y_t-\mu-\frac{\bar{\theta}[1+\bar{\theta}^2+\bar{\theta}^4+\cdots+\bar{\theta}^{2(t-2)}]}{[1+\bar{\theta}^2+\bar{\theta}^4+\cdots+\bar{\theta}^{2(t-1)}]}\bar{y}_{t-1},\\
+	&=y_t-\mu-\bar{\theta}\frac{[1-\bar{\theta}^{2(t-2)}]}{1-\bar{\theta}^{2(t-1)}}\bar{y}_{t-1}\\
+	\end{align*}
+	\begin{align*}
+	d_{tt}&=E(\bar{Y}_t^2)=\bar{\sigma}^2\frac{1+\bar{\theta}^2+\bar{\theta}^4+\cdots+\bar{\theta}^{2t}}{1+\bar{\theta}^2+\bar{\theta}^4+\cdots+\bar{\theta}^{2(t-1)}}\\
+	&=\bar{\sigma}^2\frac{1-\bar{\theta}^{2t}}{1-\bar{\theta}^{2(t-1)}}
+	\end{align*}
+	
+	Agora se $\sigma^2=\bar{\theta}^2\bar{\sigma}^2$ e $\theta=\bar{\theta}^{-1}$:
+	
+		\begin{align*}
+	\bar{y}&=y_t-\mu-\frac{\bar{\theta}^{-1}[1+\bar{\theta}^{-2}+\bar{\theta}^{-4}+\cdots+\bar{\theta}^{-2(t-2)}]}{[1+\bar{\theta}^{-2}+\bar{\theta}^{-4}+\cdots+\bar{\theta}^{-2(t-1)}]}\bar{y}_{t-1},\\
+	&=y_t-\mu-\bar{\theta}^{-1}\frac{[1-\bar{\theta}^{-2(t-2)}]}{1-\bar{\theta}^{-2(t-1)}}\bar{y}_{t-1}\\
+	\end{align*}
+	\begin{align*}
+	d_{tt}&=E(\bar{Y}_t^2)=\bar{\theta}\bar{\sigma}^2\frac{1+\bar{\theta}^{-2}+\bar{\theta}^{-4}+\cdots+\bar{\theta}^{-2t}}{1+\bar{\theta}^{-2}+\bar{\theta}^{-4}+\cdots+\bar{\theta}^{-2(t-1)}}\\
+	&=\bar{\theta}^2\bar{\sigma}^2\frac{1-\bar{\theta}^{-2t}}{1-\bar{\theta}^{-2(t-1)}}
+	\end{align*}
+	
+	As duas formas são equivalentes pois
+	
+	$$\bar{\theta}^{-1}\frac{[1-\bar{\theta}^{-2(t-2)}]}{1-\bar{\theta}^{-2(t-1)}}\equiv \bar{\theta}\frac{[1-\bar{\theta}^{2(t-2)}]}{1-\bar{\theta}^{2(t-1)}}$$
+	e
+	$$\bar{\theta}^2\frac{1-\bar{\theta}^{-2t}}{1-\bar{\theta}^{-2(t-1)}}\equiv \frac{1-\bar{\theta}^{2t}}{1-\bar{\theta}^{2(t-1)}}$$
+\end{enumerate}
