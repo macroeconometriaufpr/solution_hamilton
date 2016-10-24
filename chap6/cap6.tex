@@ -1,0 +1,46 @@
+\chapter{Análise Spectral}
+
+\begin{enumerate}
+	\item[6.1]
+	Equação 6.1.12: $$s_Y(\omega)=(2\pi)^{-1}\sigma^2[1+\theta^2+2\theta\cos(\omega)].$$
+	equação 6.1.6: $$s_Y(\omega)=\frac{1}{2\pi}\bigg\{\gamma_0+2\sum\limits_{j=1}^{\infty}\gamma_j\cos(\omega j)\bigg\}.$$
+	Autocovariâncias de um processo $MA(1)$:
+	\begin{align*}
+	\gamma_0&=\sigma^2[1+\theta^2]\\
+	\gamma_1&=\sigma^2\theta\\
+	\gamma_k&=0\quad k\geqslant2
+	\end{align*}
+
+Substituindo as autocovariâncias na equação 6.1.6, temos:
+
+\begin{align*}
+	s_Y(\omega)&=\frac{1}{2\pi}\bigg\{\sigma^2[1+\theta^2]+2\sigma^2\theta\cos(\omega )\bigg\}\\
+	&={2\pi}^{-1}\sigma^2[1+\theta^2+2\theta\cos(\omega )]\quad_{\blacksquare}
+\end{align*}
+
+	\item[6.2]
+	Equação 6.1.9:
+	$$s_Y(\omega)=\frac{\sigma^2}{2\pi}$$
+	Equação 6.1.12:
+	$$s_Y(\omega)=(2\pi)^{-1}\sigma^2[1+\theta^2+2\theta\cos(\omega)].$$
+	Equação 6.1.17:
+	$$\int_{-\pi}^{\pi}s_Y(\omega)\mathrm{d}\omega=\gamma_0$$
+
+	Integrando 6.1.9:
+	\begin{align*}
+		\int_{-\pi}^{\pi}\frac{\sigma^2}{2\pi}\mathrm{d}\omega&=\frac{\sigma^2}{2\pi}\bigg[\omega\bigg]^{\pi}_{-\pi}\\
+		&=\frac{\sigma^2}{2\pi}[\pi-(-\pi)]\\
+		&=\frac{\sigma^2}{2\pi}2\pi\\
+		&=\sigma^2
+	\end{align*}
+
+	Integrando 6.1.12:
+	\begin{align*}
+		\int_{-\pi}^{\pi}(2\pi)^{-1}\sigma^2[1+\theta^2+2\theta\cos(\omega)]\mathrm{d}\omega&=(2\pi)^{-1}\sigma^2\bigg[\omega+\theta^2\omega+2\theta\mathrm{sen}(\omega)\bigg]_{-\pi}^{\pi}\\
+		&=(2\pi)^{-1}\sigma^2\bigg[(\pi+\theta^2\pi+2\theta\mathrm{sen}(\pi))-(-\pi+\theta^2(-\pi)+2\theta\mathrm{sen}(-\pi))\bigg]\\
+		&=(2\pi)^{-1}\sigma^2\bigg[(\pi+\theta^2\pi+2\theta\mathrm{sen}(\pi))+\pi+\theta^2\pi-2\theta\mathrm{sen}(-\pi))\bigg]\\
+		&=(2\pi)^{-1}\sigma^2\bigg[2\pi(1+\theta^2)\bigg]\\
+		&=\sigma^2[1+\theta^2]\quad_{\blacksquare}
+	\end{align*}
+Já que $\mathrm{sen}(\pi)=\mathrm{sen}(-\pi)=0$.
+\end{enumerate}

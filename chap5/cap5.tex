@@ -51,7 +51,7 @@
 	
 	$$\bar{\theta}^{-1}\frac{[1-\bar{\theta}^{-2(t-2)}]}{1-\bar{\theta}^{-2(t-1)}}\equiv \bar{\theta}\frac{[1-\bar{\theta}^{2(t-2)}]}{1-\bar{\theta}^{2(t-1)}}$$
 	e
-	$$\bar{\theta}^2\frac{1-\bar{\theta}^{-2t}}{1-\bar{\theta}^{-2(t-1)}}\equiv \frac{1-\bar{\theta}^{2t}}{1-\bar{\theta}^{2(t-1)}}\;\;_\blacksquare$$
+	$$\bar{\theta}^2\frac{1-\bar{\theta}^{-2t}}{1-\bar{\theta}^{-2(t-1)}}\equiv \frac{1-\bar{\theta}^{2t}}{1-\bar{\theta}^{2(t-1)}}\quad_\blacksquare$$
 	
 	
 	\item[\fbox{5.2}]
@@ -102,7 +102,7 @@
 &=\begin{bmatrix*}[r]
 	0\\
 	0
-\end{bmatrix*}\;\;_\blacksquare
+\end{bmatrix*}\quad_\blacksquare
 		\end{align*}
 	
 	\item[\fbox{5.3}]
@@ -118,7 +118,7 @@
 			\sum\limits_{t=1}^{T}y_t&=T\mu\Rightarrow\hat{\mu}=T^{-1}\sum\limits_{t=1}^{T}y_t\\
 			\\
 			\frac{\partial \mathscr{L}}{\partial\sigma^2}&=0\Rightarrow-\frac{T}{2\sigma^2}-\bigg[-\sum\limits_{t=1}^{T}\frac{2(y_t-\mu)^2}{4\sigma^4}\bigg]=0,\\
-			\frac{T}{2\sigma^2}&=\frac{1}{2\sigma^4}\sum\limits_{t=1}^{T}(y_t-\mu)^2\Rightarrow\hat{\sigma}^2=T^{-1}\sum\limits_{t=1}^{T}(y_t-\hat{\mu})^2\;\;_\blacksquare
+			\frac{T}{2\sigma^2}&=\frac{1}{2\sigma^4}\sum\limits_{t=1}^{T}(y_t-\mu)^2\Rightarrow\hat{\sigma}^2=T^{-1}\sum\limits_{t=1}^{T}(y_t-\hat{\mu})^2_{\quad\blacksquare}
 		\end{align*}
 	
 		\item %5.3b
@@ -128,7 +128,7 @@
 			\\
 			\frac{\partial^2\mathscr{L}}{\partial\sigma^2\partial\mu}&=-\sum\limits_{t=1}^T\frac{4(y_t-\mu)}{4\sigma^4}=-\sum\limits_{t=1}^T\frac{(y_t-\mu)}{\sigma^4}\\
 			\\
-			\frac{\partial^2\mathscr{L}}{\partial(\sigma^2)^2}&=\frac{2T}{4\sigma^4}-\sum\limits_{t=1}^T\frac{4\sigma^2(y_t-\mu)^2}{4\sigma^8}=\frac{T}{2\sigma^4}-\sum\limits_{t=1}^T\frac{(y_t-\mu)^2}{\sigma^6}=\\
+			\frac{\partial^2\mathscr{L}}{\partial(\sigma^2)^2}&=\frac{2T}{4\sigma^4}-\sum\limits_{t=1}^T\frac{4\sigma^2(y_t-\mu)^2}{4\sigma^8}=\frac{T}{2\sigma^4}-\sum\limits_{t=1}^T\frac{(y_t-\mu)^2}{\sigma^6}\\
 			\\
 			\frac{\partial^2\mathscr{L}}{\partial\mu\partial\sigma^2}&=-\sum\limits_{t=1}^{T}\frac{4(y_t-\mu)}{4\sigma^4}=-\sum\limits_{t=1}^{T}\frac{(y_t-\mu)}{\sigma^4}
 		\end{align*}
@@ -140,7 +140,7 @@
 				-\sum\limits_{t=1}^T\frac{(y_t-\mu)}{\sigma^4}&\frac{T}{2\sigma^4}-\sum\limits_{t=1}^T\frac{(y_t-\mu)^2}{\sigma^6}
 			\end{bmatrix}
 		\end{align*}
-		Se avaliada em $\theta=\hat{\theta}$:
+		Se multiplicada por $T^{-1}$ e avaliada em $\theta=\hat{\theta}$:
 		
 			
 		\begin{align*}
@@ -154,9 +154,9 @@
 	Dado que $E[y_t]=\mu$ e $E[(y_t-\mu)^2]=\sigma_2$:
 	
 			$$\mathscr{\hat{I}}_{2D}=\begin{bmatrix}
-			\frac{1}{\sigma^2}&0\\
-			0&\frac{1}{2\sigma^4}
-			\end{bmatrix}$$
+			{1}/{\sigma^2}&0\\
+			0&{1}/{2\sigma^4}
+			\end{bmatrix}_{\quad\blacksquare}$$
 			
 	\item %5.3c
 	
@@ -164,8 +164,8 @@
 	
 	\begin{align*}
 		\mathscr{\hat{I}}_{2D}^{-1}={2\sigma^6}\begin{bmatrix}
-		\frac{1}{2\sigma^4}	&0\\
-			0&\frac{1}{\sigma^2}\end{bmatrix}
+		{1}/{2\sigma^4}	&0\\
+			0&{1}/{\sigma^2}\end{bmatrix}
 		=\begin{bmatrix}
 			\sigma^2	&0\\
 			0&2\sigma^4\end{bmatrix}
@@ -189,7 +189,7 @@
 	\begin{bmatrix}
 	\sigma^2/T	&0\\
 	0&2\sigma^4/T\end{bmatrix}
-	\end{pmatrix}_{\;\;\blacksquare}$$
+	\end{pmatrix}_{\quad\blacksquare}$$
 	\end{enumerate}
 	
 \end{enumerate}
