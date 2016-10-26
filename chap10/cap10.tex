@@ -1,0 +1,82 @@
+\setcounter{chapter}{9}
+\chapter{Processos Vetoriais Estacionários em Covariância}
+
+\begin{enumerate}
+	\item[\fbox{10.1}]
+	
+	Equação 10.2.19: $$\text{vec}\begin{bmatrix}
+	\Gamma_0&\Gamma_1&\cdots&\Gamma_{p-1}\\
+	\Gamma_1'&\Gamma_0&\cdots&\Gamma_{p-2}\\
+	\Gamma_{p-1}'&\Gamma_{p-2}'&\cdots&\Gamma_0
+	\end{bmatrix}=[\mathbf{I}_{r^2}-\mathbf{\mathscr{A}}]^{-1}\text{vec}(\mathbf{Q}).$$
+	Sendo que $r=np$ e $$\mathbf{\mathscr{A}}\equiv \mathbf{F}_{(r\times r)}\otimes\mathbf{F}_{(r\times r)}$$
+	
+	
+	Um processo escalar ($n=1$) $AR(p)$ tem o forma:
+	
+	\begin{align*}
+		y_t &= \phi_1y_{t-1}+\phi_2y_{t-2}+\cdots+\phi_py_{t-p}+\varepsilon_t\\
+	\end{align*}
+
+Ou em forma vetorial:
+	\begin{align*}
+		\boldsymbol{\xi}_t = \mathbf{F}\boldsymbol{\xi}_{t-1}+\mathbf{v}_t,
+	\end{align*}
+em que $$\boldsymbol{\xi}_t=\begin{bmatrix}
+y_t-\mu\\
+y_{t-1}-\mu\\
+\vdots\\
+y_{t-p+1}-\mu
+\end{bmatrix} ,\quad \mathbf{v}_t=\begin{bmatrix}
+\varepsilon_t\\
+0\\
+\vdots\\
+0
+\end{bmatrix},$$
+e conforme a equação 1.2.3: $$\mathbf{F}=\begin{bmatrix}
+\phi_1 &\phi_2&\cdots&\phi_{p-1}&\phi_p\\
+1&0&\cdots&0&0\\
+0&1&\cdots&0&0\\
+\vdots&\vdots&\cdots&\vdots&\vdots\\
+0&0&\cdots&1&0
+\end{bmatrix}$$
+
+
+temos que 
+$$\mathbf{F}_{(p\times p)}\otimes\mathbf{F}_{(p\times p)}=\begin{bmatrix}
+\phi_1\mathbf{F}_{(p\times p)} &\phi_2\mathbf{F}_{(p\times p)}&\cdots&\phi_{p-1}\mathbf{F}_{(p\times p)}&\phi_p\mathbf{F}_{(p\times p)}\\
+\mathbf{F}_{(p\times p)}&\mathbf{0}&\cdots&\mathbf{0}&\mathbf{0}\\
+\mathbf{0}&\mathbf{F}_{(p\times p)}&\cdots&\mathbf{0}&\mathbf{0}\\
+\vdots&\vdots&\cdots&\vdots&\vdots\\
+\mathbf{0}&\mathbf{0}&\cdots&\mathbf{F}_{(p\times p)}&\mathbf{0}
+\end{bmatrix}$$
+\begin{landscape}
+Então 
+\begin{align*}
+\mathbf{I}_{p^2}-(\mathbf{F}_{(p\times p)}\otimes\mathbf{F}_{(p\times p)})=\begin{bmatrix}
+\mathbf{I}_p-\phi_1\mathbf{F}_{(p\times p)} &-\phi_2\mathbf{F}_{(p\times p)}&\cdots&-\phi_{p-1}\mathbf{F}_{(p\times p)}&-\phi_p\mathbf{F}_{(p\times p)}\\
+-\mathbf{F}_{(p\times p)}&\mathbf{I}_p&\cdots&\mathbf{0}&\mathbf{0}\\
+\mathbf{0}&-\mathbf{F}_{(p\times p)}&\cdots&\mathbf{0}&\mathbf{0}\\
+\vdots&\vdots&\cdots&\vdots&\vdots\\
+\mathbf{0}&\mathbf{0}&\cdots&-\mathbf{F}_{(p\times p)}&\mathbf{I}_p
+\end{bmatrix}
+\end{align*}
+
+Reduzindo na forma escalonada temos
+
+
+\begin{align*}
+	\begin{bmatrix}
+		(\mathbf{I}_p-\phi_p\mathbf{F}^{p}_{(p\times p)}-\phi_{p-1}\mathbf{F}^{p-1}_{(p\times p)}-\cdots-\phi_2\mathbf{F}^2_{(p\times p)}-\phi_1\mathbf{F}_{(p\times p)}) &(-\phi_p\mathbf{F}^{p-1}_{(p\times p)}-\phi_{p-1}\mathbf{F}^{p-2}_{(p\times p)}-\cdots-\phi_2\mathbf{F}_{(p\times p)})&\cdots&(-\phi_p\mathbf{F}^2_{(p\times p)}-\phi_{p-1}\mathbf{F}_{(p\times p)})&(-\phi_p\mathbf{F}_{(p\times p)})\\
+		\mathbf{0}&\mathbf{I}_p&\cdots&\mathbf{0}&\mathbf{0}\\
+		\mathbf{0}&\mathbf{0}&\cdots&\mathbf{0}&\mathbf{0}\\
+		\vdots&\vdots&\cdots&\vdots&\vdots\\
+		\mathbf{0}&\mathbf{0}&\cdots&\mathbf{0}&\mathbf{I}_p
+	\end{bmatrix}
+\end{align*}
+Continua... não sei se estou no caminho certo!
+\end{landscape}
+
+		
+	
+\end{enumerate}
