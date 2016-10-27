@@ -7,6 +7,7 @@
 	Equação 10.2.19: $$\text{vec}\begin{bmatrix}
 	\Gamma_0&\Gamma_1&\cdots&\Gamma_{p-1}\\
 	\Gamma_1'&\Gamma_0&\cdots&\Gamma_{p-2}\\
+	\vdots&\vdots&\vdots&\vdots\\
 	\Gamma_{p-1}'&\Gamma_{p-2}'&\cdots&\Gamma_0
 	\end{bmatrix}=[\mathbf{I}_{r^2}-\mathbf{\mathscr{A}}]^{-1}\text{vec}(\mathbf{Q}).$$
 	Sendo que $r=np$ e $$\mathbf{\mathscr{A}}\equiv \mathbf{F}_{(r\times r)}\otimes\mathbf{F}_{(r\times r)}$$
@@ -22,61 +23,103 @@ Ou em forma vetorial:
 	\begin{align*}
 		\boldsymbol{\xi}_t = \mathbf{F}\boldsymbol{\xi}_{t-1}+\mathbf{v}_t,
 	\end{align*}
-em que $$\boldsymbol{\xi}_t=\begin{bmatrix}
-y_t-\mu\\
-y_{t-1}-\mu\\
-\vdots\\
-y_{t-p+1}-\mu
-\end{bmatrix} ,\quad \mathbf{v}_t=\begin{bmatrix}
+
+Avaliando a fórmula 10.2.19 para um processo escalar temos:
+
+	$$\text{vec}\begin{bmatrix}
+\gamma_0&\gamma_1&\cdots&\gamma_{p-1}\\
+\gamma_1 &\gamma_0&\cdots&\gamma_{p-2}\\
+\vdots&\vdots&\vdots&\vdots\\
+\gamma_{p-1} &\gamma_{p-2} &\cdots&\gamma_0
+\end{bmatrix}=[\mathbf{I}_{p^2}-\mathbf{\mathscr{A}}]^{-1}\text{vec}(\mathbf{Q}).$$
+
+Com $$\mathbf{\mathscr{A}}\equiv \mathbf{F}_{(p\times p)}\otimes\mathbf{F}_{(p\times p)}$$
+
+Temos ainda que $\mathbf{Q}$ para um processo escalar se torna:
+
+\begin{align*}\mathbf{Q}=E[\mathbf{vv}']&=E\begin{Bmatrix}
+\begin{bmatrix}
 \varepsilon_t\\
 0\\
 \vdots\\
 0
-\end{bmatrix},$$
-e conforme a equação 1.2.3: $$\mathbf{F}=\begin{bmatrix}
-\phi_1 &\phi_2&\cdots&\phi_{p-1}&\phi_p\\
-1&0&\cdots&0&0\\
-0&1&\cdots&0&0\\
-\vdots&\vdots&\cdots&\vdots&\vdots\\
-0&0&\cdots&1&0
-\end{bmatrix}$$
-
-
-temos que 
-$$\mathbf{F}_{(p\times p)}\otimes\mathbf{F}_{(p\times p)}=\begin{bmatrix}
-\phi_1\mathbf{F}_{(p\times p)} &\phi_2\mathbf{F}_{(p\times p)}&\cdots&\phi_{p-1}\mathbf{F}_{(p\times p)}&\phi_p\mathbf{F}_{(p\times p)}\\
-\mathbf{F}_{(p\times p)}&\mathbf{0}&\cdots&\mathbf{0}&\mathbf{0}\\
-\mathbf{0}&\mathbf{F}_{(p\times p)}&\cdots&\mathbf{0}&\mathbf{0}\\
-\vdots&\vdots&\cdots&\vdots&\vdots\\
-\mathbf{0}&\mathbf{0}&\cdots&\mathbf{F}_{(p\times p)}&\mathbf{0}
-\end{bmatrix}$$
-\begin{landscape}
-Então 
-\begin{align*}
-\mathbf{I}_{p^2}-(\mathbf{F}_{(p\times p)}\otimes\mathbf{F}_{(p\times p)})=\begin{bmatrix}
-\mathbf{I}_p-\phi_1\mathbf{F}_{(p\times p)} &-\phi_2\mathbf{F}_{(p\times p)}&\cdots&-\phi_{p-1}\mathbf{F}_{(p\times p)}&-\phi_p\mathbf{F}_{(p\times p)}\\
--\mathbf{F}_{(p\times p)}&\mathbf{I}_p&\cdots&\mathbf{0}&\mathbf{0}\\
-\mathbf{0}&-\mathbf{F}_{(p\times p)}&\cdots&\mathbf{0}&\mathbf{0}\\
-\vdots&\vdots&\cdots&\vdots&\vdots\\
-\mathbf{0}&\mathbf{0}&\cdots&-\mathbf{F}_{(p\times p)}&\mathbf{I}_p
+\end{bmatrix}&
+\begin{bmatrix}
+\varepsilon_t&0&\cdots&0
+\end{bmatrix}\\
+\end{Bmatrix}\\
+&=E\begin{bmatrix}
+	\varepsilon_t^2&0&\cdots&0\\
+	0&0&\cdots&0\\
+	\vdots&\vdots&\vdots&\vdots\\
+	0&0&\cdots&0
+\end{bmatrix}=\sigma^2\begin{bmatrix}
+1&0&\cdots&0\\
+0&0&\cdots&0\\
+\vdots&\vdots&\vdots&\vdots\\
+0&0&\cdots&0
 \end{bmatrix}
-\end{align*}
-
-Reduzindo na forma escalonada temos
-
-
-\begin{align*}
-	\begin{bmatrix}
-		(\mathbf{I}_p-\phi_p\mathbf{F}^{p}_{(p\times p)}-\phi_{p-1}\mathbf{F}^{p-1}_{(p\times p)}-\cdots-\phi_2\mathbf{F}^2_{(p\times p)}-\phi_1\mathbf{F}_{(p\times p)}) &(-\phi_p\mathbf{F}^{p-1}_{(p\times p)}-\phi_{p-1}\mathbf{F}^{p-2}_{(p\times p)}-\cdots-\phi_2\mathbf{F}_{(p\times p)})&\cdots&(-\phi_p\mathbf{F}^2_{(p\times p)}-\phi_{p-1}\mathbf{F}_{(p\times p)})&(-\phi_p\mathbf{F}_{(p\times p)})\\
-		\mathbf{0}&\mathbf{I}_p&\cdots&\mathbf{0}&\mathbf{0}\\
-		\mathbf{0}&\mathbf{0}&\cdots&\mathbf{0}&\mathbf{0}\\
-		\vdots&\vdots&\cdots&\vdots&\vdots\\
-		\mathbf{0}&\mathbf{0}&\cdots&\mathbf{0}&\mathbf{I}_p
-	\end{bmatrix}
-\end{align*}
-Continua... não sei se estou no caminho certo!
-\end{landscape}
-
-		
+	\end{align*}	
+	Realizando a operação vec nos dois lados da equação  10.2.19 para o processo escalar:
+	$$\begin{bmatrix}
+	\gamma_0\\
+	\gamma_1\\
+	\vdots\\
+	\gamma_{p-1}\\
+	\gamma_1\\
+	\gamma_0\\
+	\vdots\\
+	\gamma_{p-2}\\
+	\vdots\\
+	\gamma_{p-1}\\
+	\gamma_{p-2}\\
+	\vdots\\
+	\gamma_0
+	\end{bmatrix}=[\mathbf{I}_{p^2}-\mathbf{\mathscr{A}}]^{-1}\sigma^2\begin{bmatrix}
+	1\\
+	0\\
+	\vdots\\
+	0\\
+	0\\
+	0\\
+	\vdots\\
+	0\\
+	\vdots\\
+	0\\
+	0\\
+	\vdots\\
+	0
+	\end{bmatrix}$$
 	
+	dados que $[\mathbf{I}_{p^2}-\mathbf{\mathscr{A}}]^{-1}$ é uma matriz $p^2\times p^2$ e o vetor coluna do lado direito tem dimensão $P^2 \times 1$, o produto dos dois termos pode ser feito da seguinte forma. Deixe que $[\mathbf{I}_{p^2}-\mathbf{\mathscr{A}}]^{-1}$ seja igual a uma matriz $\mathbf{H}$  e que ela seja particionada em $p^2$ vetores coluna $\mathbf{h}_j$ de dimensão $p^2\times 1$ com $j=1,2,\cdots,p^2$.
+	
+	$$\mathbf{H}=\begin{bmatrix}
+	\mathbf{h}_1&\mathbf{h}_2&\cdots&\mathbf{h}_{p^2}
+	\end{bmatrix}$$
+	
+	Então o produto fica um vetor coluna de dimensão $p^2 \times 1$:
+	$$\begin{bmatrix}
+	\mathbf{h}_1&\mathbf{h}_2&\cdots&\mathbf{h}_{p^2}
+	\end{bmatrix}\begin{bmatrix}
+	1\\
+	0\\
+	\vdots\\
+	o
+	\end{bmatrix}_{(p^2\times 1)}=\begin{bmatrix}
+	\mathbf{h}_1(1)+\mathbf{h}_2(0)+\cdots+\mathbf{h}_{p^2}(0)
+	\end{bmatrix}_{(p^2\times 1)}=\begin{bmatrix}
+	\mathbf{h}_1
+	\end{bmatrix}_{(p^2\times 1)}$$
+	
+	Com isso os $p$ primeiros termos do lado esquerdo do processo escalar empilhado é o vetor coluna $$\begin{bmatrix}
+	\gamma_0\\
+	\gamma_1\\
+	\gamma_2\\
+	\vdots\\
+	\gamma_{p-1}
+	\end{bmatrix}$$
+ e os $p$ primeiros termos do lado direito desta mesma equação é um vetor composto pelos $p$ primeiros elementos do vetor $$\sigma^2\begin{bmatrix}
+ \mathbf{h}_1
+ \end{bmatrix}_{(p^2\times 1)},$$
+ que é equivalente aos $p$ primeiros elementos da primeira coluna de $$\sigma^2\mathbf{H}\equiv\sigma^2[\mathbf{I}_{p^2}-\mathbf{\mathscr{A}}]^{-1}\quad_{\blacksquare}$$.
 \end{enumerate}
