@@ -121,5 +121,210 @@ Temos ainda que $\mathbf{Q}$ para um processo escalar se torna:
  e os $p$ primeiros termos do lado direito desta mesma equação é um vetor composto pelos $p$ primeiros elementos do vetor $$\sigma^2\begin{bmatrix}
  \mathbf{h}_1
  \end{bmatrix}_{(p^2\times 1)},$$
- que é equivalente aos $p$ primeiros elementos da primeira coluna de $$\sigma^2\mathbf{H}\equiv\sigma^2[\mathbf{I}_{p^2}-\mathbf{\mathscr{A}}]^{-1}\quad_{\blacksquare}$$.
+ que é equivalente aos $p$ primeiros elementos da primeira coluna de $$\sigma^2\mathbf{H}\equiv\sigma^2[\mathbf{I}_{p^2}-\mathbf{\mathscr{A}}]^{-1}\quad_{\blacksquare}$$
+ 
+ \item[\fbox{10.2}]
+ 
+	 \begin{enumerate}
+	 	\item %10.2a
+	 	Sendo $\mathbf{y}=(X_t,Y_t)'$:
+	 	\begin{align*}
+	 		\boldsymbol{\Gamma}_k&=E[(\mathbf{y}_t-\boldsymbol{\mu})(\mathbf{y}_{t-k}-\boldsymbol{\mu})']
+	 		\end{align*}
+	 
+ Dados que no exercício $\mu_X=\mu_Y=0$:
+	 \begin{align*}
+	 	\boldsymbol{\Gamma}_k&=E[(\mathbf{y}_t)(\mathbf{y}_{t-k})']\\
+	 	&=E\begin{Bmatrix}
+	 		\begin{bmatrix}
+	 			X_t\\
+	 			Y_t
+	 		\end{bmatrix}&\begin{bmatrix}
+	 		X_{t-k}&Y_{t-k}
+ 		\end{bmatrix}
+	 	\end{Bmatrix}\\
+ 	&=E\begin{bmatrix}
+ 		X_tX_{t-k}&X_tY_{t-k}\\
+ 		Y_tX_{t-k}&Y_tY_{t-k}
+ 	\end{bmatrix}
+	 \end{align*}
+ 
+	 \begin{align*}
+	 	\boldsymbol{\Gamma}_0&=E\begin{bmatrix}
+	 		X_tX_t&X_tY_t\\
+	 		Y_tX_t&Y_tY_t
+	 	\end{bmatrix}\\
+ 	&=E\begin{bmatrix}
+ 		(\varepsilon_t+\theta\varepsilon_{t-1})(\varepsilon_t+\theta\varepsilon_{t-1})&(\varepsilon_t+\theta\varepsilon_{t-1})(h_1X_{t-1}+u_t)\\
+ 		(h_1X_{t-1}+u_t)(\varepsilon_t+\theta\varepsilon_{t-1})&(h_1X_{t-1}+u_t)(h_1X_{t-1}+u_t)
+ 	\end{bmatrix}\\
+ &=E\begin{bmatrix}
+ 	(\varepsilon_t+\theta\varepsilon_{t-1})(\varepsilon_t+\theta\varepsilon_{t-1})&(\varepsilon_t+\theta\varepsilon_{t-1})(h_1(\varepsilon_{t-1}+\theta\varepsilon_{t-2})+u_t)\\
+ 	(h_1(\varepsilon_{t-1}+\theta\varepsilon_{t-2})+u_t)(\varepsilon_t+\theta\varepsilon_{t-1})&(h_1(\varepsilon_{t-1}+\theta\varepsilon_{t-2})+u_t)(h_1(\varepsilon_{t-1}+\theta\varepsilon_{t-2})+u_t)
+ \end{bmatrix}\\
+		&=\begin{bmatrix}
+			\sigma^2_{\varepsilon}[1+\theta^2]&h_1\theta\sigma^2_{\varepsilon}\\
+			h_1\theta\sigma^2_{\varepsilon}&\sigma^2_{\varepsilon}h_1^2[1+\theta^2]+\sigma^2_u
+		\end{bmatrix}
+	 \end{align*}
+ 
+	 \begin{align*}
+	 	\boldsymbol{\Gamma}_1&=E\begin{bmatrix}
+	 		X_tX_{t-1}&X_tY_{t-1}\\
+	 		Y_tX_{t-1}&Y_tY_{t-1}
+	 	\end{bmatrix}\\
+	 	&=E\begin{bmatrix}
+	 		(\varepsilon_t+\theta\varepsilon_{t-1})(\varepsilon_{t-1}+\theta\varepsilon_{t-2})&(\varepsilon_t+\theta\varepsilon_{t-1})(h_1X_{t-2}+u_{t-1})\\
+	 		(h_1X_{t-1}+u_t)(\varepsilon_{t-1}+\theta\varepsilon_{t-2})&(h_1X_{t-1}+u_t)(h_1X_{t-2}+u_{t-1})
+	 	\end{bmatrix}\\
+ 	&=E\begin{bmatrix}
+ 		(\varepsilon_t+\theta\varepsilon_{t-1})(\varepsilon_{t-1}+\theta\varepsilon_{t-2})&(\varepsilon_t+\theta\varepsilon_{t-1})(h_1(\varepsilon_{t-2}+\theta\varepsilon_{t-3})+u_{t-1})\\
+ 		(h_1(\varepsilon_{t-1}+\theta\varepsilon_{t-2})+u_t)(\varepsilon_{t-1}+\theta\varepsilon_{t-2})&(h_1(\varepsilon_{t-1}+\theta\varepsilon_{t-2})+u_t)(h_1(\varepsilon_{t-2}+\theta\varepsilon_{t-3})+u_{t-1})
+ 	\end{bmatrix}\\
+ &=\begin{bmatrix}	
+ 	\theta\sigma^2_{\varepsilon} &0\\
+ 	h_1\sigma^2_{\varepsilon}[1+\theta^2]&h_1^2\theta\sigma^2_{\varepsilon}
+ \end{bmatrix}\\
+	\\
+	\boldsymbol{\Gamma}_2&=E\begin{bmatrix}
+		X_tX_{t-2}&X_tY_{t-2}\\
+		Y_tX_{t-2}&Y_tY_{t-2}
+	\end{bmatrix}\\
+	&=E\begin{bmatrix}
+		(\varepsilon_t+\theta\varepsilon_{t-1})(\varepsilon_{t-2}+\theta\varepsilon_{t-3})&(\varepsilon_t+\theta\varepsilon_{t-1})(h_1X_{t-3}+u_{t-2})\\
+		(h_1X_{t-1}+u_t)(\varepsilon_{t-2}+\theta\varepsilon_{t-3})&(h_1X_{t-1}+u_t)(h_1X_{t-3}+u_{t-2})
+	\end{bmatrix}\\
+		&=E\begin{bmatrix}
+		(\varepsilon_t+\theta\varepsilon_{t-1})(\varepsilon_{t-2}+\theta\varepsilon_{t-3})&(\varepsilon_t+\theta\varepsilon_{t-1})(h_1(\varepsilon_{t-3}+\theta\varepsilon_{t-4})+u_{t-2})\\
+		(h_1(\varepsilon_{t-1}+\theta\varepsilon_{t-2})+u_t)(\varepsilon_{t-2}+\theta\varepsilon_{t-3})&(h_1(\varepsilon_{t-1}+\theta\varepsilon_{t-2})+u_t)(h_1(\varepsilon_{t-3}+\theta\varepsilon_{t-4})+u_{t-2})
+	\end{bmatrix}\\
+	&=\begin{bmatrix}
+		0&0\\
+		h_1\theta\sigma^2_{\varepsilon}&0
+	\end{bmatrix}
+ 	\end{align*}
+ 
+  Temos ainda que $\boldsymbol{\Gamma}_j=\mathbf{0}$ para $j\geqslant3$.$\quad_\blacksquare$
+  
+  
+  \item %10.2b
+  
+  Equação 10.4.3: $$\mathbf{s}_{\mathbf{y}}(\omega)=(2\pi)^{-1}\mathbf{G}_{\mathbf{y}}(e^{-i\omega})=(2\pi)^{-1}\sum\limits_{k=-\infty}^{\infty}\mathbf{\Gamma}_ke^{-i\omega k}.$$
+  Neste caso $k=-1,0,1$. Lembrando que $\boldsymbol{\Gamma}_{-k}=\boldsymbol{\Gamma}_{k}'$:
+  
+  %\begin{landscape}
+  	
+  	
+  	
+  \begin{align*}\mathbf{s}_{\mathbf{y}}(\omega)=(2\pi)^{-1}\sum\limits_{k=-1}^1\boldsymbol{\Gamma}_ke^{-i\omega k}  
+  \end{align*}
+		Que de acordo com 10.4.11 fica:
+		\begin{align*}
+			\mathbf{s}_{\mathbf{y}}(\omega)&=\frac{1}{2\pi}\begin{bmatrix}
+				\sum\limits_{k=-2}^2\gamma_{XX}^{(k)}\cos(\omega k)&\sum\limits_{k=-2}^2\gamma_{XY}^{(k)}\{\cos(\omega k)-i\,\text{sen}(\omega k)\}\\
+				\sum\limits_{k=-2}^2\gamma_{YX}^{(k)}\{\cos(\omega k)-i\,\text{sen}(\omega k)\}&\sum\limits_{k=-2}^2\gamma_{YY}^{(k)}\cos(\omega k)
+			\end{bmatrix}
+		\end{align*}
+	Analisando cada termo separadamente, lembrando que $\cos(0)=1$ e $\cos(\omega)=\cos(-\omega)$:
+	\begin{align*}
+	\mathbf{s}_{\mathbf{y}}(\omega)^{11}=	\sum\limits_{k=-2}^2\gamma_{XX}^{(k)}\cos(\omega k)&=\theta\sigma^2_{\varepsilon}\cos(-\omega)+\sigma^2_{\varepsilon}[1+\theta^2]+\theta\sigma^2_{\varepsilon}\cos(\omega)\\
+		&=\sigma^2_{\varepsilon}[1+2\theta\cos(\omega)+\theta^2]\\
+		\\
+		\mathbf{s}_{\mathbf{y}}(\omega)^{22}=\sum\limits_{k=-2}^2\gamma_{YY}^{(k)}\cos(\omega k)&=h_1^2\theta\sigma^2_{\varepsilon}\cos(-\omega)+\sigma^2_{\varepsilon}h_1^2[1+\theta^2]\\
+		&+\sigma^2_u+h_1^2\theta\sigma^2_{\varepsilon}\cos(\omega)\\
+		&=\sigma^2_{\varepsilon}[h_1^2[1+\theta^2]+h_1^22\theta\cos(\omega)]+\sigma^2_u\\
+		\\
+		\mathbf{s}_{\mathbf{y}}(\omega)^{12}=\sum\limits_{k=-2}^2\gamma_{XY}^{(k)}e^{-i\omega k}&=h_1\theta\sigma^2_{\varepsilon}e^{i2\omega}
+		+h_1\sigma^2_{\varepsilon}[1+\theta^2]e^{i\omega}+h_1\theta\sigma^2_{\varepsilon}\\
+		\\
+		\mathbf{s}_{\mathbf{y}}(\omega)^{21}=\sum\limits_{k=-2}^2\gamma_{YX}^{(k)}e^{-i\omega k}&=h_1\theta\sigma^2_{\varepsilon}+h_1\sigma^2_{\varepsilon}[1+\theta^2]e^{-i\omega}+h_1\theta\sigma^2_{\varepsilon}e^{-i2\omega}\\
+	\end{align*}
+	O \emph{spectrum} populacional fica:
+	
+	\begin{align*}
+		\mathbf{s}_{\mathbf{y}}(\omega)=\frac{1}{2\pi}\begin{bmatrix*}
+			\mathbf{s}_{\mathbf{y}}(\omega)^{11}&\mathbf{s}_{\mathbf{y}}(\omega)^{12}\\
+			\mathbf{s}_{\mathbf{y}}(\omega)^{21}&\mathbf{s}_{\mathbf{y}}(\omega)^{22}
+		\end{bmatrix*}
+		\end{align*}
+	
+	O \emph{cospectrum} entre $X$ e $Y$ é:
+	\begin{align*}
+		c_{XY}(\omega)&=(2\pi)^{-1}h_1\sigma^2_{\varepsilon}(\theta\cos(2\omega)+[1+\theta^2]\cos(\omega)+\theta)
+	\end{align*}
+
+	E o \emph{quadrature spectrum} entre $X$ e $Y$ é:
+	$$q_{XY}(\omega)=-(2\pi)^{-1}h_1\sigma^2_{\varepsilon}(\theta\text{sen}(2\omega)+[1+\theta^2]\text{sen}(\omega))$$
+	
+	%\end{landscape}
+	
+	\item %10.2c
+	
+	Equação 10.4.45:
+	\begin{align*}
+		\mathbf{s}_{\mathbf{y}}(\omega)&=\begin{bmatrix}
+	1&0\\
+	h(e^{-\omega})&1
+	\end{bmatrix}\begin{bmatrix}
+	s_{XX}(\omega)&0\\0&s_{UU}(\omega)
+	\end{bmatrix}\begin{bmatrix}
+	1&h(e^{i\omega})\\0&1
+	\end{bmatrix}\\
+	&=\begin{bmatrix}
+	s_{XX}(\omega)&s_{XX}(\omega)h(e^{i\omega})\\
+	h(e^{-i\omega})s_{XX}(\omega)&h(e^{-i\omega})s_{XX}(\omega)h(e^{i\omega})+s_{UU}(\omega)
+	\end{bmatrix},
+	\end{align*}
+	
+	onde
+	\begin{align*}
+		h(e^{-i\omega})=\sum\limits_{k=-\infty}^{\infty}h_ke^{-i\omega k}\\
+	\end{align*}
+Que neste caso  $h(e^{-i\omega})=h_1e^{-i\omega}$ pois $h_k=0$ para $k \neq 1$.
+	
+	\begin{align*}
+			s_{XX}(\omega)&=(2\pi)^{-1}\sum\limits_{k=-\infty}^{\infty}\gamma_{XX}^{(k)}e^{-i\omega k}\\
+			&=(2\pi)^{-1}\bigg[\sigma^2_{\varepsilon}\theta e^{-i\omega}+\sigma^2_{\varepsilon}[1+\theta^2]+\sigma^2_{\varepsilon}\theta e^{i\omega}\bigg]\\
+			&=(2\pi)^{-1}\sigma^2_{\varepsilon}\bigg[1+2\theta\cos(\omega)+\theta^2\bigg]\\
+			\\
+			s_{UU}(\omega)&=(2\pi)^{-1}\sigma^2_u\\
+			\\
+			s_{XX}(\omega)[h_1e^{-i\omega}]&=(2\pi)^{-1}\bigg[\sigma^2_{\varepsilon}\theta e^{-i\omega}+\sigma^2_{\varepsilon}[1+\theta^2]+\sigma^2_{\varepsilon}\theta e^{i\omega}\bigg][h_1e^{-i\omega}]\\
+			&=(2\pi)^{-1}h_1\sigma^2_{\varepsilon}\bigg[\theta e^{-i2\omega}+[1+\theta^2]e^{-i\omega}+\theta\bigg]\\
+			&=(2\pi)^{-1}h_1\sigma^2_{\varepsilon}\bigg[\theta \{\cos(2\omega)-i\text{sen}(2\omega)\}+[1+\theta^2]\{\cos(\omega)-i\text{sen}(\omega)\}+\theta\bigg]\\
+			\\
+			s_{XX}(\omega)h(e^{i\omega})&=(2\pi)^{-1}\bigg[\sigma^2_{\varepsilon}\theta e^{-i\omega}+\sigma^2_{\varepsilon}[1+\theta^2]+\sigma^2_{\varepsilon}\theta e^{i\omega}\bigg][h_1e^{i\omega}]\\
+			&=(2\pi)^{-1}h_1\sigma^2_{\varepsilon}\bigg[\theta +[1+\theta^2]e^{i\omega}+\theta e^{i2\omega}\bigg]\\
+			&=(2\pi)^{-1}h_1\sigma^2_{\varepsilon}\bigg[\theta +[1+\theta^2]\{\cos(\omega)+i\text{sen}(\omega)\}+\theta \{\cos(2\omega)+i\text{sen}(2\omega)\}\bigg]\\
+			\\
+			h(e^{-i\omega})s_{XX}(\omega)h(e^{i\omega})+s_{UU}(\omega)&=(2\pi)^{-1}h_1\sigma^2_{\varepsilon}\bigg[\theta e^{-i2\omega}+[1+\theta^2]e^{-i\omega}+\theta\bigg][h_1e^{i\omega}]+s_{UU}\\
+			&=(2\pi)^{-1}h_1^2\sigma^2_{\varepsilon}\bigg[\theta e^{-i\omega}+[1+\theta^2]+\theta e^{i\omega}\bigg]+(2\pi)^{-1}\sigma^2_u\\
+			&=(2\pi)^{-1}h_1^2\sigma^2_{\varepsilon}\bigg[2\theta \{\cos(\omega)\}+[1+\theta^2]\bigg]+(2\pi)^{-1}\sigma^2_u
+	\end{align*}
+		
+		\item %10.2d
+		
+		Equação 10.4.49:
+		$$h_k=(2\pi)^{-1}\int_{-\pi}^{\pi}\frac{s_{YX}(\omega)}{s_{XX}(\omega)}e^{i\omega k} d\omega.$$
+		
+		Quando $k=1$:
+		\begin{align*}
+			h_1&=(2\pi)^{-1}\int_{-\pi}^{\pi}\frac{(2\pi)^{-1}[h_1\theta\sigma^2_{\varepsilon}+h_1\sigma^2_{\varepsilon}[1+\theta^2]e^{-i\omega}+h_1\theta\sigma^2_{\varepsilon}e^{-i2\omega}]}{(2\pi)^{-1}\sigma^2_{\varepsilon}\bigg[1+2\theta\cos(\omega)+\theta^2\bigg]}e^{i\omega} d\omega\\
+			&=(2\pi)^{-1}\int_{-\pi}^{\pi}\frac{[h_1\theta\sigma^2_{\varepsilon}e^{i\omega}+h_1\sigma^2_{\varepsilon}[1+\theta^2]+h_1\theta\sigma^2_{\varepsilon}e^{-i\omega}]}{\sigma^2_{\varepsilon}\bigg[1+2\theta\cos(\omega)+\theta^2\bigg]} d\omega\\
+			&=(2\pi)^{-1}\int_{-\pi}^{\pi}\frac{\bigg(h_1\sigma^2_{\varepsilon}\bigg[\theta e^{i\omega}+[1+\theta^2]+\theta e^{-i\omega}\bigg]\bigg)}{\sigma^2_{\varepsilon}\bigg[1+2\theta\cos(\omega)+\theta^2\bigg]} d\omega\\
+			&=(2\pi)^{-1}\int_{-\pi}^{\pi}\frac{\bigg(h_1\sigma^2_{\varepsilon}\bigg[1+2\theta\cos(\omega)+\theta^2\bigg]\bigg)}{\sigma^2_{\varepsilon}\bigg[1+2\theta\cos(\omega)+\theta^2\bigg]} d\omega\\
+			&=(2\pi)^{-1}\int_{-\pi}^{\pi}{h_1} d\omega=h_1
+		\end{align*}
+		
+		Quando $k\neq 1$:
+		
+		\begin{align*}
+			h_k&=(2\pi)^{-1}\int_{-\pi}^{\pi}h_1e^{-i\omega}e^{i\omega k}d\omega\\
+			&=(2\pi)^{-1}\int_{-\pi}^{\pi}h_1e^{(k-1)i\omega}d\omega\\
+			&=(2\pi)^{-1}\int_{-\pi}^{\pi}h_1\cos([k-1]\omega)d\omega+i(2\pi)^{-1}\int_{-\pi}^{\pi}h_1\text{sen}([k-1]\omega)d\omega\\
+			&=([k-1]2\pi)^{-1}h_1\bigg[\text{sen}([k-1]\omega)\bigg]_{-\pi}^{\pi}-i([k-1]2\pi)^{-1}h_1\bigg[\text{cos}([k-1]\omega)\bigg]_{-\pi}^{\pi}\\
+			&=0\quad_{\blacksquare}
+		\end{align*}
+\end{enumerate}
+  
 \end{enumerate}

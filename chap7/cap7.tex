@@ -1,0 +1,90 @@
+\chapter{Teoria de distribuição assintótica}
+
+\begin{enumerate}
+	\item[\fbox{7.1}]
+	Por continuidade, $|g(X_T,c_T)-g(\xi,c)|>\delta$ somente se $|X_T-\xi|+|c_T-c|>\eta$ para algum $\eta$. Mas $c_T \rightarrow c$ e $X_T\xrightarrow[]{p} \xi$ significa que existe um $N$ tal que $|c_T-c|<\eta/2$ para todo $T\geq N$, com isso $P\{|c_T-c|>\eta/2\}=0$, e tal que  $P\{|X_T-\xi|>\eta/2\}<\varepsilon$ para todo $T\geq N$. Então $P\{|X_T-\xi|+|c_T-c|>\eta\}$ é menor que $\varepsilon$ para todo $T\geq N$, implicando que $P\{g(X_T, c_T)-g(\xi, c)|>\delta\}<\varepsilon$.\quad$_{\blacksquare}$
+	
+	\item[\fbox{7.2}] 
+	
+	\begin{enumerate}
+		\item %7.2a
+		\begin{align*}
+			Y_t&=\sum\limits_{i=0}^{\infty}0.8^i\varepsilon_{t-i}=\kappa_t\\
+			\bar{Y_{t}}&=\frac{1}{T}\sum\limits_{t=1}^T\kappa_t\\
+			\text{Var}[\bar{Y}_t]&=E[\bar{Y}_t^2]-E[\bar{Y}_t]^2, \text{ dado que }E[\bar{Y}_t]=0\\
+			\text{Var}[\bar{Y}_t]&=E[\bar{Y}_t^2]=E\Bigg\{\Bigg[\frac{1}{T}\sum\limits_{t=1}^T\kappa_t\Bigg]^2\Bigg\}\\
+			&=\frac{1}{T^2}E\sum\limits_{t=1}^T\bigg[(\varepsilon_t+0.8\varepsilon_{t-1}+0.8^2\varepsilon_{t-2}+\cdots)(\varepsilon_t+0.8\varepsilon_{t-1}+0.8^2\varepsilon_{t-2}+\cdots)\bigg]\\
+			&=\frac{1}{T^2}E\sum\limits_{t=1}^T\bigg[\varepsilon_t^2+0.8\varepsilon_t\varepsilon_{t-1}+0.8^2\varepsilon_t\varepsilon_{t-2}+\cdots+0.8\varepsilon_t\varepsilon_{t-1}+0.8^2\varepsilon_{t-1}^2+0.8^3\varepsilon_{t-1}\varepsilon_{t-2}+\cdots\bigg]\\
+			&=\frac{1}{T^2}\sum\limits_{t=1}^T\bigg[1+0.8^2+0.8^4+0.8^6+\cdots\bigg]\\
+			&=\frac{1}{T^2}\frac{T}{1-0.8^2}=\frac{2.77}{T}\\
+			\lim\limits_{T\rightarrow\infty}T\cdot\text{Var}[\bar{Y}_t]&=\lim\limits_{T\rightarrow \infty}T\cdot\frac{2.77}{T}=\quad_{\blacksquare}
+		\end{align*}
+	
+		\item  %7.2b
+		
+		De uma distribuição normal padronizada, o valor da variável $z$ que possui $95\%$ de confiança é $1.645$. Portanto:
+		
+		\begin{align*}
+			1.645=0.1\frac{\sqrt{T}}{\sqrt{2.77}} \Rightarrow T=751,67
+		\end{align*}
+	
+		Então a amostra deve ter mais de 751 observações.$\quad_{\blacksquare}$
+	
+	\end{enumerate}
+
+		\item[\fbox{7.3}]
+		
+		Não, pois uma sequência de diferença \emph{martingale} possui variância que pode depender do tempo.
+		
+		\item[\fbox{7.4}]
+		Sim, pois uma sequência de diferença \emph{martingale} possui média zero, porém, com a adição do fato de que sua variância seja constante (não dependente do tempo), $Y_t$ se torna estacionário em covariância.
+		
+		\item[\fbox{7.5}]
+		Uma sequência $\{Y_t\}$ é \emph{uniformemente integrável} se para cada $\varepsilon>0$, existe um $c>0$ tal que 
+		
+		$$E(|Y_t|\cdot\delta_{[|Y_t|\geq c]})<\varepsilon$$
+		
+		Para todo $t$, onde $\delta_{[|Y_t|\geq c]}=1$ se $|Y_t|\geq c$ e $0$ caso contrário.
+				
+		Para a variável aleatória de interesse temos:
+		
+		\begin{align*}
+			E(|X_{t,k}|\cdot\delta_{[|Y_t|\geq c]})&=E\bigg(\bigg|\sum\limits_{u=0}^{\infty}\sum\limits_{v=0}^{\infty}\psi_u\psi_v[\varepsilon_{t-u}\varepsilon_{t-k-v}-E(\varepsilon_{t-u}\varepsilon_{t-k-v})]\bigg|\cdot\delta_{[|Y_t|\geq c]}\bigg)\\
+			&\leq E\bigg(\sum\limits_{u=0}^{\infty}\sum\limits_{v=0}^{\infty}\bigg|\psi_u\psi_v\bigg|\bigg|[\varepsilon_{t-u}\varepsilon_{t-k-v}-E(\varepsilon_{t-u}\varepsilon_{t-k-v})]\bigg|\cdot\delta_{[|Y_t|\geq c]}\bigg)
+		\end{align*}
+		Como $\{\psi_j\}_{j=0}^{\infty}$ é absolutamente somável podemos colocar o operador de esperança dentro do somatório.
+		
+		\begin{align*}
+			E(|X_{t,k}|\cdot\delta_{[|Y_t|\geq c]})&= \sum\limits_{u=0}^{\infty}\sum\limits_{v=0}^{\infty}E\bigg|\psi_u\psi_v\bigg|\bigg|[\varepsilon_{t-u}\varepsilon_{t-k-v}-E(\varepsilon_{t-u}\varepsilon_{t-k-v})]\bigg|\cdot\delta_{[|Y_t|\geq c]}\\
+			&\leq\sum\limits_{u=0}^{\infty}\sum\limits_{v=0}^{\infty}\bigg|\psi_u\psi_v\bigg|\bigg\{E\bigg|[\varepsilon_{t-u}\varepsilon_{t-k-v}-E(\varepsilon_{t-u}\varepsilon_{t-k-v})]\bigg|^{r}\bigg\}^{1/r}\times \bigg\{\frac{E|Y_{t,k}|}{c}\bigg\}^{(r-1)/r}
+		\end{align*}
+	
+	Em que a última desigualdade segue os mesmo argumentos de $7.A.6$. Portanto
+	
+	
+	\begin{align*}
+		E(|X_{t,k}|\cdot\delta_{[|Y_t|\geq c]})&\leq\sum\limits_{u=0}^{\infty}\sum\limits_{v=0}^{\infty}\bigg|\psi_u\psi_v\bigg|\bigg\{M'\bigg\}^{1/r}\times \bigg\{\frac{E|X_{t,k}|}{c}\bigg\}^{(r-1)/r}
+	\end{align*}
+	
+	Dado que $E|X_{t,k}|$ seja limitado:
+	
+	\begin{align*}
+		E|X_{t,k}|&=E\bigg|\sum\limits_{u=0}^{\infty}\sum\limits_{v=0}^{\infty}\psi_u\psi_v[\varepsilon_{t-u}\varepsilon_{t-k-v}-E(\varepsilon_{t-u}\varepsilon_{t-k-v})]\bigg|\\
+		&\leq\sum\limits_{u=0}^{\infty}\sum\limits_{v=0}^{\infty}\bigg|\psi_u\psi_v\bigg|E\bigg|[\varepsilon_{t-u}\varepsilon_{t-k-v}-E(\varepsilon_{t-u}\varepsilon_{t-k-v})]\bigg|\\
+		&=K
+	\end{align*}
+	 
+	 Temos que:
+	 
+	 \begin{align*}
+	 	E(|X_{t,k}|\cdot\delta_{[|Y_t|\geq c]})\leq\sum\limits_{u=0}^{\infty}\sum\limits_{v=0}^{\infty}\bigg|\psi_u\psi_v\bigg|\bigg\{M'\bigg\}^{1/r}\times \bigg\{\frac{K}{c}\bigg\}^{(r-1)/r}
+	 \end{align*}
+	 
+	 Desde que $\{\psi_j\}_{j=0}^{\infty}$ é absolutamente somável, o lado direito da desigualdade pode ser suficientemente pequeno ($<\varepsilon$) se escolhermos $c$ suficientemente grande.$\quad_{\blacksquare}$
+	 
+	 \item[\fbox{7.6}]
+	 
+	 Pela proposição 7.1, só é preciso mostrar que $\bar{Y_t}\xrightarrow[]{p}\mu$.
+	 Como a variância de $\bar{Y_t}$ converge para zero quando $t$ tende ao infinito ($\sigma^2/T\rightarrow 0$) e $\bar{Y_t}\rightarrow\mu$, $\bar{Y_t}$ converge em média quadrática para $\mu$ e portanto também converge em probabilidade. 
+	 
+\end{enumerate}
