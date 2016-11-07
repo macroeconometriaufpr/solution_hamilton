@@ -80,11 +80,35 @@
 	 	E(|X_{t,k}|\cdot\delta_{[|Y_t|\geq c]})\leq\sum\limits_{u=0}^{\infty}\sum\limits_{v=0}^{\infty}\bigg|\psi_u\psi_v\bigg|\bigg\{M'\bigg\}^{1/r}\times \bigg\{\frac{K}{c}\bigg\}^{(r-1)/r}
 	 \end{align*}
 	 
-	 Desde que $\{\psi_j\}_{j=0}^{\infty}$ é absolutamente somável, o lado direito da desigualdade pode ser suficientemente pequeno ($<\varepsilon$) se escolhermos $c$ suficientemente grande.$\quad_{\blacksquare}$
+	 Desde que $\{\psi_j\}_{j=0}^{\infty}$ seja absolutamente somável, o lado direito da desigualdade pode ser suficientemente pequeno ($<\varepsilon$) se escolhermos $c$ suficientemente grande.$\quad_{\blacksquare}$
 	 
 	 \item[\fbox{7.6}]
 	 
 	 Pela proposição 7.1, só é preciso mostrar que $\bar{Y_t}\xrightarrow[]{p}\mu$.
 	 Como a variância de $\bar{Y_t}$ converge para zero quando $t$ tende ao infinito ($\sigma^2/T\rightarrow 0$) e $\bar{Y_t}\rightarrow\mu$, $\bar{Y_t}$ converge em média quadrática para $\mu$ e portanto também converge em probabilidade. 
 	 
+	 
+	 \item[\fbox{7.7}]
+	 
+	 \begin{enumerate}
+	 	\item %7.7a
+	 	
+	 	Podemos mostrar que $$\frac{1}{T}\sum\limits_{t=1}^TY_t\xrightarrow[]{m.s.}\mu.$$
+	 	Ou seja, que $$E\bigg(\frac{1}{T}\sum\limits_{t=1}^TY_t-\mu\bigg)^2<\varepsilon.$$
+	 	Pela lei dos grandes números para observações serialmente correlacionadas (seção 7.2) temos que $E(\bar{Y_T}-\mu)^2\rightarrow0$. Portanto $\bar{Y_T}\xrightarrow[]{m.s.}\mu$, o que implica em $$\frac{1}{T}\sum\limits_{t=1}^TY_t\xrightarrow[]{p}\mu.\quad_{\blacksquare}$$
+	 	
+	 	\item %7.7b
+	 	
+	 	Note que  $E|\varepsilon_t|^r<\infty$ para $r=4$, tal que 7.2.14 estabelece $$\frac{1}{T-k}\sum\limits_{t=k+1}^T\bar{Y}_t\bar{Y}_{t-k}\xrightarrow[]{p}E(\bar{Y}_t\bar{Y}_{t-k}).$$
+	 	
+	 	Onde $\bar{Y}_t\equiv Y_t-\mu$. Mas
+	 	
+	 	\begin{align*}
+	 		\frac{1}{T-k}\sum\limits_{t=k+1}^TY_tY_{t-k}&=\frac{1}{T-k}\sum\limits_{t=k+1}^T(\bar{Y}_t+\mu)(\bar{Y}_{t-k}+\mu)\\
+	 		&=\frac{1}{T-k}\sum\limits_{t=k+1}^T\bar{Y}_t\bar{Y}_{t-k}+\mu\frac{1}{T-k}\sum\limits_{t=k+1}^T\bar{Y}_{t-k}+\mu\frac{1}{T-k}\sum\limits_{t=k+1}^T\bar{Y}_{t-k}+\mu^2\\
+	 		&=E(\bar{Y}_t+\mu)(\bar{Y}_{t-k}+\mu)\\
+	 		&=E(Y_tT_{t-k}).\quad_{\blacksquare}
+	 	\end{align*}
+	 \end{enumerate}
+	 	 
 \end{enumerate}
